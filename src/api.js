@@ -1,9 +1,19 @@
 import axios from "axios";
 
-const instance = axios.create({
-  baseURL: "https://nc-news-project-q2e5.onrender.com/api",
-});
+const allArticles = () => {
+  return axios
+    .get("https://nc-news-project-q2e5.onrender.com/api/articles")
+    .then((response) => {
+      return response;
+    });
+};
 
-const allArticles = instance.get("/articles");
+const articleById = (article_id) => {
+  return axios
+    .get(`https://nc-news-project-q2e5.onrender.com/api/articles/${article_id}`)
+    .then((response) => {
+      return response;
+    });
+};
 
-export { allArticles };
+export { allArticles, articleById };
