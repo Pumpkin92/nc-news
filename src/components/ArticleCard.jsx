@@ -12,7 +12,6 @@ export default function ArticleCard({ article }) {
         <Link to={`/articles/${article.article_id}`}>
           <img src={article.article_img_url} />
         </Link>
-        <p>{article.body}</p>
         <p>Comments: {article.comment_count}</p>
       </li>
     </div>

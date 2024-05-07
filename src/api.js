@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const allArticles = () => {
+const getAllArticles = () => {
   return axios
     .get("https://nc-news-project-q2e5.onrender.com/api/articles")
     .then((response) => {
@@ -8,7 +8,7 @@ const allArticles = () => {
     });
 };
 
-const articleById = (article_id) => {
+const getArticleById = (article_id) => {
   return axios
     .get(`https://nc-news-project-q2e5.onrender.com/api/articles/${article_id}`)
     .then((response) => {
@@ -16,4 +16,14 @@ const articleById = (article_id) => {
     });
 };
 
-export { allArticles, articleById };
+const getCommentsByArticleId = (article_id) => {
+  return axios
+    .get(
+      `https://nc-news-project-q2e5.onrender.com/api/articles/${article_id}/comments`
+    )
+    .then((response) => {
+      return response;
+    });
+};
+
+export { getAllArticles, getArticleById, getCommentsByArticleId };
