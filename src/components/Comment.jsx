@@ -1,13 +1,14 @@
+import { useState } from "react";
+import CommentVote from "./CommentVote";
+
 export default function Comment({ comment }) {
   return (
     <section className="comment-box">
       <p>
         <span className="comment-author">{comment.author}</span>: {comment.body}
       </p>
-      <p>Votes: {comment.votes}</p>
+      <CommentVote comment={comment} />
       <p>{new Date(comment.created_at).toLocaleDateString()}</p>
-      <button>❤️</button>
-      <button>💔</button>
     </section>
   );
 }

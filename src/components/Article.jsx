@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { getArticleById } from "../api";
 import ArticleStyle from "./ArticleStyle";
 import CommentList from "./CommentList";
+import Loading from "./Loading";
+import ArticleVotes from "./ArticleVotes";
 
 export default function Article() {
   const [article, setArticle] = useState();
@@ -17,7 +19,7 @@ export default function Article() {
   }, [setArticle]);
 
   return isloading ? (
-    <h2>Loading...</h2>
+    <Loading />
   ) : (
     <section>
       <ArticleStyle>
@@ -29,7 +31,7 @@ export default function Article() {
           <p>{article.body}</p>
           <p>{new Date(article.created_at).toLocaleDateString()}</p>
           <p>Comments: {article.comment_count}</p>
-          <p>Votes: {article.votes}</p>
+          <ArticleVotes articleVote={article.votes} articleId={article_id} />
         </section>
       </ArticleStyle>
       <ArticleStyle>
