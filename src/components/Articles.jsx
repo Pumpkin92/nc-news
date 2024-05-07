@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { allArticles } from "../api";
+import { getAllArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import ArticleStyle from "./ArticleStyle";
 
@@ -7,7 +7,7 @@ export default function Articles() {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    allArticles().then(({ data }) => {
+    getAllArticles().then(({ data }) => {
       setArticles(data.articles);
     });
   }, []);
