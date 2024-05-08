@@ -56,10 +56,32 @@ const patchArticleVote = (article_id, vote) => {
     });
 };
 
+const postComment = (comment, user, article_id) => {
+  const newComment = {
+    body: comment,
+    author: user,
+  };
+  return axios
+    .post(
+      `https://nc-news-project-q2e5.onrender.com/api/articles/${article_id}/comments`,
+      newComment
+    )
+    .then((response) => {
+      if (response.status !== 201) {
+        return Promise.reject({
+          status: response.status,
+          msg: response.statusText,
+        });
+      }
+      return response;
+    });
+};
+
 export {
   getAllArticles,
   getArticleById,
   getCommentsByArticleId,
   patchCommentVote,
   patchArticleVote,
+  postComment,
 };

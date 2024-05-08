@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../api";
 import ArticleStyle from "./ArticleStyle";
 import CommentList from "./CommentList";
 import Loading from "./Loading";
 import ArticleVotes from "./ArticleVotes";
+import CommentPost from "./CommentPost";
 
 export default function Article() {
   const [article, setArticle] = useState();
@@ -34,6 +35,7 @@ export default function Article() {
           <ArticleVotes articleVote={article.votes} articleId={article_id} />
         </section>
       </ArticleStyle>
+      <ArticleStyle>{<CommentPost articleId={article_id} />}</ArticleStyle>
       <ArticleStyle>
         <CommentList />
       </ArticleStyle>
