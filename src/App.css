@@ -31,3 +31,15 @@ ul {
 .comment-author {
   font-weight: 600;
 }
+
+.posted-comment {
+  background-color: rgb(189, 241, 189) !important;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 6px;
+}
+
+.comment-text-box {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}

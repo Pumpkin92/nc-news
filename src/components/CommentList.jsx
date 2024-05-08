@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { getCommentsByArticleId } from "../api";
 import { useParams } from "react-router-dom";
 import Comment from "./Comment";
-import ArticleStyle from "./ArticleStyle";
 import CommentStyle from "./CommentStyle";
 
 export default function CommentList() {
