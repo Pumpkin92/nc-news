@@ -77,6 +77,23 @@ const postComment = (comment, user, article_id) => {
     });
 };
 
+const deleteComment = (comment_id) => {
+  console.log(comment_id);
+  return axios
+    .delete(
+      `https://nc-news-project-q2e5.onrender.com/api/comments/${comment_id}`
+    )
+    .then((response) => {
+      if (response.status !== 204) {
+        return Promise.reject({
+          status: response.status,
+          msg: response.statusText,
+        });
+      }
+      return response;
+    });
+};
+
 export {
   getAllArticles,
   getArticleById,
@@ -84,4 +101,5 @@ export {
   patchCommentVote,
   patchArticleVote,
   postComment,
+  deleteComment,
 };
