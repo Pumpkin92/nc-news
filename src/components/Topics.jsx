@@ -14,10 +14,11 @@ export default function Topics({ setTopic, queryTopic }) {
       const topics = data.topics;
       setTopics(topics);
     });
-  }, [setTopic]);
+  }, [setCurrentTopic]);
 
   return (
     <section>
+      <label>Topics: </label>
       <select
         value={currentTopic}
         onChange={(event) => {
@@ -27,9 +28,11 @@ export default function Topics({ setTopic, queryTopic }) {
       >
         <option value="all">All Topics</option>
         {topics.map((topic, index) => {
+          const capitalisedTopic =
+            topic.slug.charAt(0).toUpperCase() + topic.slug.slice(1);
           return (
             <option value={topic.slug} key={index}>
-              {topic.slug}
+              {capitalisedTopic}
             </option>
           );
         })}
