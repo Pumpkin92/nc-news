@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../contexts/User";
 import { postComment } from "../api";
 
-export default function CommentPost({ articleId }) {
+export default function CommentPost({ articleId, setComments }) {
   const [comment, setComment] = useState("");
   const [posted, setPosted] = useState(false);
   const { user } = useContext(UserContext);
@@ -17,6 +17,7 @@ export default function CommentPost({ articleId }) {
   const handleSubmit = (event) => {
     setIsClicked(true);
     event.preventDefault();
+
     postComment(comment, user, articleId)
       .then((response) => {
         setPosted(true);
@@ -29,6 +30,12 @@ export default function CommentPost({ articleId }) {
 
   const handleCommentBtn = (event) => {
     setPosted(false);
+
+    setIsClicked(false);
+    setComments((currComments) => {
+      return [...currComments, comment];
+    });
+    setComment("");
   };
 
   if (user === "") {

@@ -5,7 +5,6 @@ export default function Header() {
     <header>
       <h1>NC News</h1>
       <Link to="/">Home</Link>
-      <Link to="/topics">Topics</Link>
     </header>
   );
 }

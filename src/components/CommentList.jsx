@@ -23,7 +23,7 @@ export default function CommentList() {
       {comments.map((comment) => {
         return (
           <CommentStyle key={comment.comment_id}>
-            <Comment comment={comment} />
+            <Comment comment={comment} setComments={setComments} />
           </CommentStyle>
         );
       })}
