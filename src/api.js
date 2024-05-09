@@ -78,7 +78,6 @@ const postComment = (comment, user, article_id) => {
 };
 
 const deleteComment = (comment_id) => {
-  console.log(comment_id);
   return axios
     .delete(
       `https://nc-news-project-q2e5.onrender.com/api/comments/${comment_id}`
@@ -94,6 +93,24 @@ const deleteComment = (comment_id) => {
     });
 };
 
+const getTopics = () => {
+  return axios
+    .get("https://nc-news-project-q2e5.onrender.com/api/topics")
+    .then((response) => {
+      return response;
+    });
+};
+
+const getArticlesByTopic = (topic) => {
+  return axios
+    .get(
+      `https://nc-news-project-q2e5.onrender.com/api/articles?topic=${topic}`
+    )
+    .then((response) => {
+      return response;
+    });
+};
+
 export {
   getAllArticles,
   getArticleById,
@@ -102,4 +119,6 @@ export {
   patchArticleVote,
   postComment,
   deleteComment,
+  getTopics,
+  getArticlesByTopic,
 };
