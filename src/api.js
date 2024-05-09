@@ -1,8 +1,10 @@
 import axios from "axios";
 
-const getAllArticles = () => {
+const getAllArticles = (sortBy, orderQuery) => {
   return axios
-    .get("https://nc-news-project-q2e5.onrender.com/api/articles")
+    .get(`https://nc-news-project-q2e5.onrender.com/api/articles`, {
+      params: { limit: 100, sort_by: sortBy, order: orderQuery },
+    })
     .then((response) => {
       return response;
     });
@@ -101,11 +103,11 @@ const getTopics = () => {
     });
 };
 
-const getArticlesByTopic = (topic) => {
+const getArticlesByTopic = (topic, sortBy, orderQuery) => {
   return axios
-    .get(
-      `https://nc-news-project-q2e5.onrender.com/api/articles?topic=${topic}`
-    )
+    .get(`https://nc-news-project-q2e5.onrender.com/api/articles`, {
+      params: { limit: 100, topic: topic, sort_by: sortBy, order: orderQuery },
+    })
     .then((response) => {
       return response;
     });
