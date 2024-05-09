@@ -13,7 +13,7 @@ export default function CommentVote(props) {
 
   return (
     <section>
-      <p>Votes: {votes + voteChange}</p>
+      <p>Votes: {votes}</p>
       <button disabled={voteChange === 1} onClick={() => handleVote(1)}>
         ❤️
       </button>

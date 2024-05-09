@@ -26,7 +26,7 @@ export default function Topics({ setTopic, queryTopic }) {
           setCurrentTopic(event.target.value);
         }}
       >
-        <option value="all">All Topics</option>
+        <option value="">All Topics</option>
         {topics.map((topic, index) => {
           const capitalisedTopic =
             topic.slug.charAt(0).toUpperCase() + topic.slug.slice(1);

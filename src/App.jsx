@@ -7,6 +7,7 @@ import Article from "./components/Article";
 import Topic from "./components/Topics";
 import Header from "./components/Header";
 import { UserProvider } from "./contexts/User";
+import Error from "./components/Error";
 
 function App() {
   return (
@@ -17,9 +18,12 @@ function App() {
           <Route path="/" element={<Articles />} />
           <Route path="/articles/:article_id" element={<Article />} />
           <Route path="/topics" element={<Topic />} />
+
           <Route
-            path="/articles/?topic=coding"
-            element={<Articles topic="test" />}
+            path="/*"
+            element={
+              <Error message="This path does not exist, please try another page" />
+            }
           />
         </Routes>
       </UserProvider>

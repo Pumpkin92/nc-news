@@ -1,12 +1,13 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/User";
 import { postComment } from "../api";
+import Error from "./Error";
 
 export default function CommentPost({ articleId, setComments }) {
   const [comment, setComment] = useState("");
   const [posted, setPosted] = useState(false);
   const { user } = useContext(UserContext);
-  const [isError, setisError] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
   const handleChange = (event) => {
@@ -17,20 +18,23 @@ export default function CommentPost({ articleId, setComments }) {
   const handleSubmit = (event) => {
     setIsClicked(true);
     event.preventDefault();
-
-    postComment(comment, user, articleId)
-      .then((response) => {
-        setPosted(true);
-        setisError(false);
-      })
-      .catch((error) => {
-        setisError(true);
-      });
+    if (comment.length < 1) {
+      console.log("logged)");
+      setIsError(true);
+    } else {
+      postComment(comment, user, articleId)
+        .then((response) => {
+          setPosted(true);
+          setisError(false);
+        })
+        .catch((error) => {
+          setIsError(true);
+        });
+    }
   };
 
   const handleCommentBtn = (event) => {
     setPosted(false);
-
     setIsClicked(false);
     setComments((currComments) => {
       return [...currComments, comment];
@@ -43,7 +47,11 @@ export default function CommentPost({ articleId, setComments }) {
   }
 
   if (isError) {
-    return <h2>{"Oops something went wrong, please try again later"}</h2>;
+    return (
+      <div>
+        <Error message="Oops something went wrong, please try again later" />
+      </div>
+    );
   }
 
   return posted ? (
@@ -65,7 +73,6 @@ export default function CommentPost({ articleId, setComments }) {
           type="text"
           name="commentBody"
           value={comment}
-          required
           onChange={handleChange}
         ></input>
       </label>
