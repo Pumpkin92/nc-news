@@ -17,7 +17,9 @@ export default function DeleteComment({ comment_id, setDeleted }) {
   };
 
   if (isError) {
-    return <h2>{"Oops something went wrong, please try again later"}</h2>;
+    return (
+      <Error message="Oops something went wrong, please try again later" />
+    );
   }
 
   return (

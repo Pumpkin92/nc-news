@@ -1,15 +1,5 @@
 import axios from "axios";
 
-const getAllArticles = (sortBy, orderQuery) => {
-  return axios
-    .get(`https://nc-news-project-q2e5.onrender.com/api/articles`, {
-      params: { limit: 100, sort_by: sortBy, order: orderQuery },
-    })
-    .then((response) => {
-      return response;
-    });
-};
-
 const getArticleById = (article_id) => {
   return axios
     .get(`https://nc-news-project-q2e5.onrender.com/api/articles/${article_id}`)
@@ -114,7 +104,6 @@ const getArticlesByTopic = (topic, sortBy, orderQuery) => {
 };
 
 export {
-  getAllArticles,
   getArticleById,
   getCommentsByArticleId,
   patchCommentVote,

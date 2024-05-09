@@ -6,20 +6,28 @@ import CommentList from "./CommentList";
 import Loading from "./Loading";
 import ArticleVotes from "./ArticleVotes";
 import CommentPost from "./CommentPost";
+import Error from "./Error";
 
 export default function Article() {
   const [article, setArticle] = useState();
   const { article_id } = useParams({});
   const [isloading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    getArticleById(article_id).then(({ data }) => {
-      setArticle(data.article);
-      setIsLoading(false);
-    });
+    getArticleById(article_id)
+      .then(({ data }) => {
+        setArticle(data.article);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setIsError(true);
+      });
   }, [setArticle]);
 
-  return isloading ? (
+  return isError ? (
+    <Error message="Article not found" />
+  ) : isloading ? (
     <Loading />
   ) : (
     <section>

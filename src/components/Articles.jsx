@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
-import { getAllArticles, getArticlesByTopic } from "../api";
+import { getArticlesByTopic } from "../api";
 import ArticleCard from "./ArticleCard";
 import ArticleStyle from "./ArticleStyle";
 import Loading from "./Loading";
 import Topics from "./Topics";
 import { useSearchParams } from "react-router-dom";
 import SortArticles from "./SortArticles";
+import Error from "./Error";
 
 export default function Articles() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [topic, setTopic] = useState("all");
+  const [topic, setTopic] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
   const [orderQuery, setOrderQuery] = useState("DESC");
   const [sortBy, setSortBy] = useState("created_at");
   const [orderQueryBtn, setOrderQueryBtn] = useState("Descending ↓");
   const queryTopic = searchParams.get("topic");
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     if (queryTopic) {
@@ -24,21 +26,20 @@ export default function Articles() {
   }, []);
 
   useEffect(() => {
-    if (topic !== "all") {
-      getArticlesByTopic(topic, sortBy, orderQuery).then(({ data }) => {
+    getArticlesByTopic(topic, sortBy, orderQuery)
+      .then(({ data }) => {
         setArticles(data.articles);
         setIsLoading(false);
         setSearchParams({ topic: topic });
+      })
+      .catch((error) => {
+        setIsError(true);
       });
-    } else {
-      getAllArticles(sortBy, orderQuery).then(({ data }) => {
-        setArticles(data.articles);
-        setIsLoading(false);
-      });
-    }
   }, [topic, sortBy, orderQuery]);
 
-  return isLoading ? (
+  return isError ? (
+    <Error message="Topic does not exist" />
+  ) : isLoading ? (
     <Loading />
   ) : (
     <section>
