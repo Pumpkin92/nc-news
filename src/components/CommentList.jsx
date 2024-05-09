@@ -14,7 +14,7 @@ export default function CommentList() {
       setComments(data.comments);
       setIsLoading(false);
     });
-  }, []);
+  }, [comments]);
 
   return isLoading ? (
     <h2>Loading...</h2>
