@@ -20,39 +20,41 @@ export default function SortArticles({
   };
 
   return (
-    <section>
-      <select
-        value={sortBy}
-        onChange={(event) => {
-          setSortBy(event.target.value);
-        }}
-      >
-        <option value="created_at">Sort Articles By</option>
-        {sortQueries.map((sort, index) => {
-          if (sort === "created_at") {
-            return (
-              <option value={sort} key={index}>
-                Date created
-              </option>
-            );
-          } else if (sort === "comment_count") {
-            return (
-              <option value={sort} key={index}>
-                Comments
-              </option>
-            );
-          } else {
-            return (
-              <option value={sort} key={index}>
-                {sort}
-              </option>
-            );
-          }
-        })}
-      </select>
-      <button onClick={handleClick} value={orderQuery}>
-        {orderQueryBtn}
-      </button>
+    <section className="sort-section">
+      <div className="sort-div">
+        <select
+          value={sortBy}
+          onChange={(event) => {
+            setSortBy(event.target.value);
+          }}
+        >
+          <option value="created_at">Sort Articles By</option>
+          {sortQueries.map((sort, index) => {
+            if (sort === "created_at") {
+              return (
+                <option value={sort} key={index}>
+                  Date created
+                </option>
+              );
+            } else if (sort === "comment_count") {
+              return (
+                <option value={sort} key={index}>
+                  Comments
+                </option>
+              );
+            } else {
+              return (
+                <option value={sort} key={index}>
+                  {sort}
+                </option>
+              );
+            }
+          })}
+        </select>
+        <button className="order-btn" onClick={handleClick} value={orderQuery}>
+          {orderQueryBtn}
+        </button>
+      </div>
     </section>
   );
 }

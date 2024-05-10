@@ -17,9 +17,10 @@ export default function Topics({ setTopic, queryTopic }) {
   }, [setCurrentTopic]);
 
   return (
-    <section>
-      <label>Topics: </label>
+    <section className="topic-section">
+      <label className="topic-label">Topics: </label>
       <select
+        className="topic-options"
         value={currentTopic}
         onChange={(event) => {
           setTopic(event.target.value);

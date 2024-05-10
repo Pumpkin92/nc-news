@@ -1,5 +1,28 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
-  background-color: rgb(225, 225, 240);
+  background-color: #e1d8e3;
+
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.loading-section {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3.5rem;
+}
+
+h2 {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 a {
@@ -10,13 +33,153 @@ ul {
   padding: 0;
 }
 
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+header {
+  margin-bottom: 1rem;
+
+  text-align: center;
+  background-color: #ffffff;
+  width: 100%;
+
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.header-div {
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.header-logo-div {
+  margin-left: 5rem;
+}
+
+.home-div {
+  text-align: right;
+  margin-right: 2rem;
+  padding-bottom: 1rem;
+}
+.topic-sort-parent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.topic-section {
+  padding: 10px;
+
+  width: 30%;
+}
+
+.sort-section {
+  padding: 10px;
+  text-align: right;
+  width: 20%;
+}
+
+.order-btn {
+  margin-left: 0.5rem;
+  margin-top: 0;
+}
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+}
+
 .articleStyle {
   list-style: none;
   padding: 1rem;
   margin: 1rem;
+  background-color: #f0e28e;
   border-radius: 8px;
   box-shadow: 1px 5px 6px 5px rgb(154, 150, 150);
   background-color: white;
+  flex-basis: 25%;
+}
+
+.articleStyle-container {
+  margin-left: 20rem;
+  margin-right: 20rem;
+}
+
+.comm-vote-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.article-list-topic {
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  color: rgb(86, 83, 83);
+}
+
+.article-list-author {
+  margin-top: 0.5rem;
+  margin-bottom: -0.5rem;
+}
+
+.article-body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  width: 85%;
+  margin-left: 7%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.article-header {
+  text-align: center;
+}
+
+.article-topic {
+  margin: 0.5rem;
+  color: rgb(86, 83, 83);
+}
+
+.article-author {
+  margin-bottom: 1rem;
+}
+
+.date-comment-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.votes-section {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.votes {
+  margin-bottom: 1rem;
+}
+
+.vote-btn-div {
+  text-align: center;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.vote-btn {
+  padding: 0.5rem;
+}
+
+.comment-body {
+  margin-left: 1rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .commentStyle {
@@ -34,12 +197,105 @@ ul {
 
 .posted-comment {
   background-color: rgb(189, 241, 189) !important;
-  padding: 0.5rem;
-  margin: 0.5rem;
+  padding: 1.5rem;
+  margin: 1.5rem;
   border-radius: 6px;
+}
+
+.comment-date {
+  margin-top: 1.3rem;
+  font-size: 0.8rem;
 }
 
 .comment-text-box {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+}
+
+.form-div {
+  text-align: center;
+  margin-left: 4rem;
+  margin-right: 5rem;
+}
+.comment-label {
+  margin-bottom: 1rem;
+}
+
+textarea {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.comment-body-list {
+  margin: 1rem;
+  border: solid 1px rgb(120, 114, 114);
+  border-radius: 6px;
+  padding: 1rem;
+  padding-bottom: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.899);
+}
+
+button {
+  margin: 1rem;
+
+  padding: 0.3rem;
+  border-radius: 6px;
+}
+
+.delete-btn {
+  font-size: 0.6rem;
+}
+
+.date-delete-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 1200px) {
+  .articleStyle {
+    flex-basis: 40%;
+  }
+  .articleStyle-container {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .sort-section {
+    width: 30%;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .articleStyle {
+    flex-basis: 100%;
+  }
+
+  .articleStyle-container {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .sort-section {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .articleStyle-container {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .sort-section {
+    width: 30%;
+  }
+  .order-btn {
+    margin-top: 5px;
+  }
+  .topic-options {
+    margin-top: 5px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+  .header-logo-div {
+    margin-left: 2.5rem;
+  }
 }

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../contexts/User";
 import { postComment } from "../api";
 import Error from "./Error";
+import ButtonStyle from "./ButtonStyle";
 
 export default function CommentPost({ articleId, setComments }) {
   const [comment, setComment] = useState("");
@@ -25,7 +26,7 @@ export default function CommentPost({ articleId, setComments }) {
       postComment(comment, user, articleId)
         .then((response) => {
           setPosted(true);
-          setisError(false);
+          setIsError(false);
         })
         .catch((error) => {
           setIsError(true);
@@ -65,20 +66,26 @@ export default function CommentPost({ articleId, setComments }) {
       <button onClick={handleCommentBtn}>Post another comment? </button>
     </section>
   ) : (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Comment:
-        <input
-          className="comment-text-box"
-          type="text"
-          name="commentBody"
-          value={comment}
-          onChange={handleChange}
-        ></input>
-      </label>
-      <button type="submit" disabled={isClicked}>
-        Submit
-      </button>
-    </form>
+    <div className="form-div">
+      <form onSubmit={handleSubmit}>
+        <label>
+          <div className="comment-label">Comment:</div>
+          <textarea
+            className="comment-text-box"
+            type="text"
+            name="commentBody"
+            value={comment}
+            onChange={handleChange}
+            rows="5"
+            cols="35"
+          ></textarea>
+        </label>
+        <ButtonStyle>
+          <button type="submit" disabled={isClicked}>
+            Submit
+          </button>
+        </ButtonStyle>
+      </form>
+    </div>
   );
 }

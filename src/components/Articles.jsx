@@ -43,15 +43,17 @@ export default function Articles() {
     <Loading />
   ) : (
     <section>
-      <Topics setTopic={setTopic} queryTopic={queryTopic} />
-      <SortArticles
-        setOrderQuery={setOrderQuery}
-        orderQuery={orderQuery}
-        setSortBy={setSortBy}
-        sortBy={sortBy}
-        orderQueryBtn={orderQueryBtn}
-        setOrderQueryBtn={setOrderQueryBtn}
-      />
+      <div className="topic-sort-parent">
+        <Topics setTopic={setTopic} queryTopic={queryTopic} />
+        <SortArticles
+          setOrderQuery={setOrderQuery}
+          orderQuery={orderQuery}
+          setSortBy={setSortBy}
+          sortBy={sortBy}
+          orderQueryBtn={orderQueryBtn}
+          setOrderQueryBtn={setOrderQueryBtn}
+        />
+      </div>
       <div className="flex-container">
         {articles.map((article) => {
           return (
