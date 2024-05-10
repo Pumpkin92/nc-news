@@ -31,22 +31,29 @@ export default function Article() {
     <Loading />
   ) : (
     <section>
-      <ArticleStyle>
-        <section className="articleCard">
-          <h2>{article.title}</h2>
-          <p>{article.topic}</p>
-          <p>By {article.author}</p>
-          <img src={article.article_img_url} />
-          <p>{article.body}</p>
-          <p>{new Date(article.created_at).toLocaleDateString()}</p>
-          <p>Comments: {article.comment_count}</p>
-          <ArticleVotes articleVote={article.votes} articleId={article_id} />
-        </section>
-      </ArticleStyle>
-      <ArticleStyle>{<CommentPost articleId={article_id} />}</ArticleStyle>
-      <ArticleStyle>
-        <CommentList />
-      </ArticleStyle>
+      <div className="articleStyle-container">
+        <ArticleStyle>
+          <section className="articleCard">
+            <div className="article-header">
+              <h2>{article.title}</h2>
+
+              <p className="article-topic">{article.topic}</p>
+              <p className="article-author">By {article.author}</p>
+            </div>
+            <img src={article.article_img_url} />
+            <p className="article-body">{article.body}</p>
+            <div className="date-comment-container">
+              <p>Comments: {article.comment_count}</p>
+              <p>{new Date(article.created_at).toLocaleDateString()}</p>
+            </div>
+            <ArticleVotes articleVote={article.votes} articleId={article_id} />
+          </section>
+        </ArticleStyle>
+        <ArticleStyle>{<CommentPost articleId={article_id} />}</ArticleStyle>
+        <ArticleStyle>
+          <CommentList />
+        </ArticleStyle>
+      </div>
     </section>
   );
 }

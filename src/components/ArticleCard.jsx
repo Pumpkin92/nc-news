@@ -7,12 +7,15 @@ export default function ArticleCard({ article }) {
         <Link to={`/articles/${article.article_id}`}>
           <h2>{article.title}</h2>
         </Link>
-        <p>{article.topic}</p>
-        <p>By {article.author}</p>
+        <p className="article-list-topic">{article.topic}</p>
+        <p className="article-list-author">By {article.author}</p>
         <Link to={`/articles/${article.article_id}`}>
           <img src={article.article_img_url} />
         </Link>
-        <p>Comments: {article.comment_count}</p>
+        <div className="comm-vote-container">
+          <p>Comments: {article.comment_count}</p>
+          <p>Votes: {article.votes}</p>
+        </div>
       </li>
     </div>
   );

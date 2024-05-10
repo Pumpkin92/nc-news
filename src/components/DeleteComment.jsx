@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { deleteComment } from "../api";
+import Error from "./Error";
 
 export default function DeleteComment({ comment_id, setDeleted }) {
   const [isError, setisError] = useState(false);
@@ -23,7 +24,12 @@ export default function DeleteComment({ comment_id, setDeleted }) {
   }
 
   return (
-    <button type="submit" onClick={handleClick} disabled={isClicked}>
+    <button
+      className="delete-btn"
+      type="submit"
+      onClick={handleClick}
+      disabled={isClicked}
+    >
       Delete Comment
     </button>
   );
