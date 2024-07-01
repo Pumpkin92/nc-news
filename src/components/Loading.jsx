@@ -7,10 +7,7 @@ export default function Loading() {
       <h2>
         Loading...
         <div>
-          <FontAwesomeIcon
-            icon={faSpinner}
-            className="fa-spin-pulse fa-spin-reverse"
-          />
+          <FontAwesomeIcon icon={faSpinner} className="fa-spin-pulse fa-spin" />
         </div>
       </h2>
     </section>
